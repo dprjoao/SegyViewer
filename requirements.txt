@@ -1,0 +1,4 @@
+numpy
+segyio
+PySide6
+pyqtgraph
