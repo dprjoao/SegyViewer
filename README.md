@@ -1,7 +1,5 @@
 # SEG-Y Viewer
 
-https://github.com/dprjoao/SegyViewer
-
 A desktop application for inspecting and visualizing SEG-Y seismic data, built with Python and PyQt.
 
 The project aims to provide a simple and interactive environment for exploring seismic traces, SEG-Y metadata, and trace headers without loading the entire dataset into memory.
