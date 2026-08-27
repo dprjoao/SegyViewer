@@ -91,7 +91,9 @@ segy_viewer/
 │   └── reader.py
 │
 ├── ui/
-│   ├── header_dialog.py
+│   ├── file_inspector.py
+│   ├── icons.py
+│   ├── theme.py
 │   └── trace_inspector.py
 │
 ├── plotting/
