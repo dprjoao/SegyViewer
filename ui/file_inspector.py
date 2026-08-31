@@ -213,10 +213,10 @@ class FileInspectorDock(QDockWidget):
             f"{dataset.samples_per_trace:,}"
         )
         self.sample_interval.setText(
-            f"{dataset.sample_interval_us:g} µs"
+            f"{dataset.sample_interval_ms} ms"
         )
         self.duration.setText(
-            f"{dataset.duration_ms:g} ms"
+            f"{dataset.duration_s:g} s"
         )
         self.endian.setText(dataset.endian)
 

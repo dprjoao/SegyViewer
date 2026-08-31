@@ -19,14 +19,19 @@ class SegyDataset:
     _header_cache: dict[int, np.ndarray] = field(default_factory=dict, repr=False)
 
     @property
-    def sample_interval_ms(self):
-        return self.sample_interval_us / 1000.0
+    def sample_interval_ms(self) -> int:
+        return int(round(self.sample_interval_us / 1000.0))
 
     @property
-    def duration_ms(self):
+    def duration_s(self) -> float:
         if self.samples_per_trace == 0:
             return 0.0
-        return float(self.sample_axis[-1])
+
+        return (
+            self.samples_per_trace
+            * self.sample_interval_ms
+            / 1000.0
+        )
 
     def _open(self):
         return segyio.open(
