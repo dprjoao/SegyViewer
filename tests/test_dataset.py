@@ -29,26 +29,25 @@ def build_dataset(
     )
 
 
-def test_sample_interval_ms() -> None:
+def test_sample_interval_ms_is_integer() -> None:
     dataset = build_dataset(
         sample_interval_us=2000.0,
     )
 
-    assert dataset.sample_interval_ms == 2.0
+    assert dataset.sample_interval_ms == 2
+    assert isinstance(dataset.sample_interval_ms, int)
 
 
-def test_duration_ms() -> None:
+def test_duration_s() -> None:
     dataset = build_dataset(
-        sample_axis=np.array(
-            [0.0, 2.0, 4.0],
-            dtype=float,
-        ),
+        sample_interval_us=2000.0,
+        samples_per_trace=3000,
     )
 
-    assert dataset.duration_ms == 4.0
+    assert dataset.duration_s == 6.0
 
 
-def test_duration_ms_for_empty_trace() -> None:
+def test_duration_s_for_empty_trace() -> None:
     dataset = build_dataset(
         samples_per_trace=0,
         sample_axis=np.array(
@@ -57,7 +56,7 @@ def test_duration_ms_for_empty_trace() -> None:
         ),
     )
 
-    assert dataset.duration_ms == 0.0
+    assert dataset.duration_s == 0.0
 
 
 def test_clear_header_cache() -> None:
