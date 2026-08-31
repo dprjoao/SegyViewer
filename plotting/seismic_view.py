@@ -22,7 +22,7 @@ class SeismicView(pg.PlotWidget):
         self.setLabel(
             "left",
             "Time",
-            units="ms",
+            units="s",
             color="#C8D2DA",
         )
         self.setLabel(
@@ -69,6 +69,13 @@ class SeismicView(pg.PlotWidget):
             autoLevels=True,
         )
 
+        # segyio provides the sample axis in milliseconds. Convert it to
+        # seconds for the conventional seismic time display.
+        sample_axis_s = np.asarray(
+            sample_axis_ms,
+            dtype=np.float64,
+        ) / 1000.0
+
         if len(trace_indices):
             x0 = float(trace_indices[0])
 
@@ -81,13 +88,13 @@ class SeismicView(pg.PlotWidget):
                 else 1.0
             )
 
-            if len(sample_axis_ms) > 1:
+            if len(sample_axis_s) > 1:
                 y0 = float(
-                    sample_axis_ms[0]
+                    sample_axis_s[0]
                 )
                 dy = float(
-                    sample_axis_ms[1]
-                    - sample_axis_ms[0]
+                    sample_axis_s[1]
+                    - sample_axis_s[0]
                 )
             else:
                 y0 = 0.0
