@@ -185,7 +185,7 @@ class MainWindow(QMainWindow):
                 f"{self.dataset.path.name}    |    "
                 f"{self.dataset.trace_count:,} traces    |    "
                 f"{self.dataset.samples_per_trace:,} samples    |    "
-                f"dt {self.dataset.sample_interval_us:g} µs"
+                f"dt {self.dataset.sample_interval_ms} ms"
             )
 
         except Exception as exc:
