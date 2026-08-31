@@ -227,7 +227,3 @@ class MainWindow(QMainWindow):
         self.trace_inspector.select_zero_based_trace(
             trace_index
         )
-
-        self.tabs.setCurrentWidget(
-            self.trace_inspector
-        )
